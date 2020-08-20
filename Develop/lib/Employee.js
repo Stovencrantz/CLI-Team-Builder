@@ -1,15 +1,18 @@
 // TODO: Write code to define and export the Employee class
 class Employee {
     constructor(name, id, email) {
+        //we check that the value of name passed in is a valid string
         if (typeof name !== "string" || !name.trim().length) {
-            throw new Error ("Expected a non-empty string in name");
+            return console.log("Expected a non-empty string in name");
         } 
-
+        //assign variables equal to the data that is passed in
         this.name = name;
         this.id = id;
         this.email = email;
     }
 
+    //declare some methods
+    //all subclasses will have access to these methods
     getName() {
         console.log(`Employee name: ${this.name}`);
         return this.name;
@@ -25,9 +28,7 @@ class Employee {
         return this.email;
     }
 
-
-    getRole() {
-        //it will return what this object functionally is --string "employee"
+    getRole () {
         return "Employee";
     }
 }
