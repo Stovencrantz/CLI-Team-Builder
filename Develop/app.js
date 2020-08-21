@@ -74,7 +74,7 @@ function getEmployees() {
             }, {
                 type: "input",
                 message: "What is the engineers gitHub username?",
-                name: "gitHub",
+                name: "github",
                 when: (userInput) => userInput.employeeRole === "Engineer"
             }, {
                 type: "input",
@@ -130,8 +130,9 @@ function getEmployees() {
                     }
                     //if our output directory does not exist, create it and write to it
                     else {
-                        path.resolve(__dirname, "output");
-                        path.join(OUTPUT_DIR, "team.html");
+                        fs.mkdir("output", (err) => {
+                            if (err) throw err;
+                        });
 
                         fs.writeFile(outputPath, render(employees), (err) => {
                             if (err) throw err;
